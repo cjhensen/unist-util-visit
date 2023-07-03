@@ -39,7 +39,6 @@
     "Richard Gibson <richard.gibson@gmail.com>"
   ],
   "sideEffects": false,
-  "type": "module",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
@@ -68,12 +67,13 @@
     "xo": "^0.53.0"
   },
   "scripts": {
-    "prepack": "npm run build && npm run format",
+    "prepack": "yarn build && yarn format",
     "build": "tsc --build --clean && tsc --build && tsd && type-coverage",
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "node --conditions development test.js",
-    "test-coverage": "c8 --check-coverage --100 --reporter lcov npm run test-api",
-    "test": "npm run build && npm run format && npm run test-coverage"
+    "test-coverage": "c8 --check-coverage --100 --reporter lcov yarn test-api",
+    "test": "yarn build && yarn format && yarn test-coverage",
+    "build:cjs": "node ./toCjs.js"
   },
   "prettier": {
     "tabWidth": 2,
